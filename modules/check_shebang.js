@@ -14,7 +14,7 @@ export const checkShebang = (file) => {
         ['.sh', '#!/usr/bin/env bash'],
         ['.py', '#!/usr/bin/env python']
     ];
-    let shebangReg = / *#!\/usr\/bin\/env *\w*/;
+    let shebangReg = /^ *#!\/usr\/bin\/env *\w+/;
     let dataFile = readFileSync(file, 'utf-8');
 
     if (dataFile.match(shebangReg)) {
