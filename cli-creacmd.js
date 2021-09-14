@@ -17,11 +17,15 @@ import {
 import {
     existsCMD
 } from './modules/check_cmd_exist.js';
+import {
+    checkExtension
+} from './modules/check_extension.js';
 
 export const creacmd = ([, , ...args] = process.argv) => {
     if (args.length === 2) {
         if (existsSync(args[0])) {
             existsCMD(args[1]);
+            checkExtension(args[0]);
             checkShebang(args[0]);
             chmodSync(args[0], 0o755);
             symlink(`${process.env.PWD}/${args[0]}`, `/usr/local/bin/${args[1]}`, err => {

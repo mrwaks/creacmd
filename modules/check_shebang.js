@@ -17,7 +17,7 @@ export const checkShebang = (file) => {
     let shebangReg = /^ *#!\/usr\/bin\/env *\w+/;
     let dataFile = readFileSync(file, 'utf-8');
 
-    if (dataFile.match(shebangReg)) {
+    if (shebangReg.test(dataFile)) {
         return;
     } else {
         for (let i = 0; i < extAndShebang.length; i++) {
