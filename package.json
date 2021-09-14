@@ -1,0 +1,29 @@
+{
+  "name": "creacmd",
+  "version": "1.0.0",
+  "description": "Module used to convert a script to the command line",
+  "bin": {
+    "creacmd": "./cli-creacmd.js",
+    "delcmd": "./cli-delcmd.js"
+  },
+  "keywords": [
+    "command",
+    "command line",
+    "create",
+    "delete",
+    "cli",
+    "terminal",
+    "bin",
+    "creacmd"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrwaks/creacmd.git"
+  },
+  "author": "mrwaks",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0"
+  },
+  "type": "module"
+}
