@@ -12,6 +12,7 @@ import colors from 'colors';
 
 export const delcmd = ([, , ...args] = process.argv) => {
     if (args.length >= 1) {
+        deleteCommandLoop:
         args.forEach(cmd => {
             if (existsSync(`/usr/local/bin/${cmd}`)) {
                 let str = '';
