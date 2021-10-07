@@ -10,6 +10,7 @@ import {
 
 /**
  * Function allowing to check if a shebang exists on a file, and to add one if there is none.
+ * 
  * @param {string} file - file to parse.
  */
 export const checkShebang = (file) => {
