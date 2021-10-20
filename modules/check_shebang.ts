@@ -13,14 +13,14 @@ import {
  * 
  * @param {string} file - file to parse.
  */
-export const checkShebang = (file) => {
-    let extAndShebang = [
+export const checkShebang = (file: string) => {
+    let extAndShebang: (string[])[] = [
         ['.js', '#!/usr/bin/env node'],
         ['.sh', '#!/usr/bin/env bash'],
         ['.py', '#!/usr/bin/env python']
     ];
-    let shebangReg = /^ *#!\/usr\/bin\/env *\w+/;
-    let dataFile = readFileSync(file, 'utf-8');
+    let shebangReg: RegExp = /^ *#!\/usr\/bin\/env *\w+/;
+    let dataFile: string | string[] = readFileSync(file, 'utf-8');
 
     if (shebangReg.test(dataFile)) {
         return;
@@ -28,11 +28,11 @@ export const checkShebang = (file) => {
         // Loop for allowing to check the extension of the file to analyze 
         // and according to this one to insert the appropriate shebang.
         insertShebangLoop:
-        for (let i = 0; i < extAndShebang.length; i++) {
+        for (let i: number = 0; i < extAndShebang.length; i++) {
             if (file.match(extAndShebang[i][0])) {
-                let dataFile = readFileSync(file, 'utf-8').split(EOL);
+                dataFile = readFileSync(file, 'utf-8').split(EOL);
                 dataFile.splice(0, 0, extAndShebang[i][1]);
-                let shebangInsert = dataFile.join(EOL);
+                const shebangInsert: string = dataFile.join(EOL);
                 writeFile(file, shebangInsert, err => {
                     if (err) throw err;
                 })

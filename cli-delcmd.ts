@@ -8,25 +8,23 @@ import {
 } from 'fs';
 import { EOL } from 'os';
 
-import colors from 'colors';
-
-export const delcmd = ([, , ...args] = process.argv) => {
+export const delcmd = ([, , ...args]: string[] = process.argv) => {
     if (args.length >= 1) {
         deleteCommandLoop:
         args.forEach(cmd => {
             if (existsSync(`/usr/local/bin/${cmd}`)) {
-                let str = '';
+                let str: string = '';
                 str += cmd;
                 rm(`/usr/local/bin/${cmd}`, err => {
                     if (err) throw err;
                 });
-                console.log(`🚀 Congratulations !${EOL}The ${str.bold} command is now deleted !`.green);
+                console.log(`🚀 Congratulations !${EOL}The ${str} command is now deleted !`);
             } else {
-                console.log(`Error: command line does not exist.`.red);
+                console.log(`Error: command line does not exist.`);
             }
         })
     } else {
-        console.log('Error: missing argument.'.red);
+        console.log('Error: missing argument.');
     }
 }
 

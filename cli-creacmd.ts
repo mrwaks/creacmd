@@ -7,7 +7,6 @@ import {
     chmodSync,
     existsSync
 } from 'fs';
-import colors from 'colors';
 import {
     EOL
 } from 'os';
@@ -21,7 +20,7 @@ import {
     checkExtension
 } from './modules/check_extension.js';
 
-export const creacmd = ([, , ...args] = process.argv) => {
+export const creacmd = ([, , ...args]: string[] = process.argv) => {
     if (args.length === 2) {
         if (existsSync(args[0])) {
             existsCMD(args[1]);
@@ -31,12 +30,12 @@ export const creacmd = ([, , ...args] = process.argv) => {
             symlink(`${process.env.PWD}/${args[0]}`, `/usr/local/bin/${args[1]}`, err => {
                 if (err) throw err;
             });
-            console.log(`🚀 Congratulations !${EOL}The ${args[1].bold} command is now functional !`.green);
+            console.log(`🚀 Congratulations !${EOL}The ${args[1]} command is now functional !`);
         } else {
-            console.log(`Error: ${args[0]} file does not exit.`.red)
+            console.log(`Error: ${args[0]} file does not exit.`);
         }
     } else {
-        console.log('Error: missing argument.'.red);
+        console.log('Error: missing argument.');
     }
 
 }

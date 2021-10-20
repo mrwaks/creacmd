@@ -1,10 +1,14 @@
 {
   "name": "creacmd",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Module used to convert a script to the command line",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
   "bin": {
-    "creacmd": "./cli-creacmd.js",
-    "delcmd": "./cli-delcmd.js"
+    "creacmd": "./dist/cli-creacmd.js",
+    "delcmd": "./dist/cli-delcmd.js"
   },
   "keywords": [
     "command",
@@ -23,7 +27,6 @@
   "author": "mrwaks",
   "license": "MIT",
   "dependencies": {
-    "colors": "^1.4.0"
-  },
-  "type": "module"
+    "@types/node": "^16.11.1"
+  }
 }
