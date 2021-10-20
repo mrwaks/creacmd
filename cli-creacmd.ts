@@ -27,7 +27,7 @@ export const creacmd = ([, , ...args]: string[] = process.argv) => {
             checkExtension(args[0]);
             checkShebang(args[0]);
             chmodSync(args[0], 0o755);
-            symlink(`${process.env.PWD}/${args[0]}`, `/usr/local/bin/${args[1]}`, err => {
+            symlink(`${process.cwd()}/${args[0]}`, `/usr/local/bin/${args[1]}`, err => {
                 if (err) throw err;
             });
             console.log(`🚀 Congratulations !${EOL}The ${args[1]} command is now functional !`);
