@@ -1,6 +1,6 @@
 {
   "name": "creacmd",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Module used to convert a script to the command line",
   "scripts": {
     "build": "tsc",

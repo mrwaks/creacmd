@@ -4,7 +4,7 @@
 
 import {
     existsSync,
-    rm
+    unlinkSync
 } from 'fs';
 import { EOL } from 'os';
 
@@ -15,9 +15,7 @@ export const delcmd = ([, , ...args]: string[] = process.argv) => {
             if (existsSync(`/usr/local/bin/${cmd}`)) {
                 let str: string = '';
                 str += cmd;
-                rm(`/usr/local/bin/${cmd}`, err => {
-                    if (err) throw err;
-                });
+                unlinkSync(`/usr/local/bin/${cmd}`);
                 console.log(`🚀 Congratulations !${EOL}The ${str} command is now deleted !`);
             } else {
                 console.log(`Error: command line does not exist.`);
