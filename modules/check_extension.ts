@@ -1,16 +1,10 @@
 'use strict';
 
+const validExtensions = [".js", ".py", ".sh"];
+
 /**
  * Function allowing to check if the file chosen by the user uses a compatible extension (.js, .sh, .py).
  * 
  * @param {string} file - file to parse.
  */
-export function checkExtension(file: string): void {
-    if (file.endsWith('.js') || file.endsWith('.sh') || file.endsWith('.py')) {
-        return;
-    } else {
-        console.log('Error: invalid file extension.');
-        console.log(`Supported file extensions are: ${'.js'.bold} ${'.sh'.bold} ${'.py'.bold}`);
-        process.exit(1);
-    }
-}
+export const checkExtension: (file: string) => void = (file: string) => validExtensions.map(ext => new RegExp(`\\${ext}$`).test(file)).find(bool => bool === true) ? true : (console.log(`Error: invalid file extension.\nSupported file extensions are: \x1b[1m".js" ".sh" ".py"\x1b[0m`), process.exit(1));
