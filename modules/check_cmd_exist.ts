@@ -7,11 +7,4 @@ import { existsSync } from "fs";
  * 
  * @param {string} cmd - command to parse.
  */
-export const existsCMD = (cmd: string): void => {
-    if (existsSync(`/usr/local/bin/${cmd}`)) {
-        console.log('Error: already existing command line: please choose another name.');
-        process.exit(1);
-    } else {
-        return;
-    }
-}
+export const existsCMD: (cmd: string) => void = (cmd: string) => !existsSync(`/usr/local/bin/${cmd}`) ? true : (console.log('Error: already existing command line: please choose another name.'), process.exit(1));
